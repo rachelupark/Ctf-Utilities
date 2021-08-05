@@ -42,13 +42,17 @@ else:
 decrypted_msg = ""
 
 for c in encrypted_msg:
-    if (c in alphabet):
+    if (c.lower() in alphabet):
         pos = alphabet.index(c.lower())
         new_pos = pos + int(rot_key)
         if (new_pos >= len(alphabet)):
             new_pos = new_pos - len(alphabet)
         # print(f'Line {lineno()}: The new character position is {new_pos}.') # Hint
-        new_c = alphabet[new_pos]
+        if c.isupper():
+            new_c = alphabet[new_pos].upper()
+        else:
+            new_c = alphabet[new_pos]
+
         """ Hint
         print(f'Line {lineno()}: Beginning to decrypt message with a rotation of {rot_key}...')
         print(f'Line {lineno()}: Encrypted character is {c} with an alphabet position of {pos}')
